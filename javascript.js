@@ -53,15 +53,14 @@ else
     return 3;
 }
 
-function playGame(){
+function playGame(ui_selection){
+
+
 
 let comp_count = 0, player_count = 0, tie_count = 0;
 
-    for(let i = 0; i <= 4; i++ ){
 
-        //Starting values
-
-        const playerSelection = prompt("Rock, Paper or Scissors?");
+        const playerSelection = ui_selection;
         const computerSelection = getComputerChoice();
         
         let result = 0;
@@ -81,10 +80,21 @@ let comp_count = 0, player_count = 0, tie_count = 0;
         console.log("Computer Wins: " + comp_count);
         console.log("Ties:          " + tie_count);
 
-    }
+    
 
 }
 
-playGame();
+//DOM CHANGES
+
+
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    playGame(button.id);
+  });
+});
 
  
