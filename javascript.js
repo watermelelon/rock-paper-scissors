@@ -20,38 +20,49 @@ function getComputerChoice(){
     }
 }
 
+
+
 function playRound(playerSelection, computerSelection){
 
 playerSelection = playerSelection.toLowerCase();
+const results = document.querySelector("#results");
+const outcome = document.createElement("h2");
+outcome.classList.add("outcome");
+results.appendChild(outcome);
 
 //Establishing winning conditions
 if (playerSelection === "rock" && computerSelection === "scissors"){
-
-    console.log("Player WINS. Rock wins over scissors");
+    
+    
+    outcome.innerText = "Player WINS. Rock wins over scissors";
     return 1;
 }
 else if(playerSelection === "paper" && computerSelection === "rock"){
     
-    console.log("Player WINS. Paper wins over rock");
+    outcome.innerText = "Player WINS. Paper wins over rock";
     return 1;
 }
 else if(playerSelection === "scissors" && computerSelection === "paper"){
 
-    console.log("Player WINS. Scissors wins over paper");
+    outcome.innerText = "Player WINS. Scissors wins over paper";
     return 1;
 
 }
 //In case there is a TIE
 else if(playerSelection === computerSelection){
+ 
 
-    console.log("Its a TIE");
+    outcome.innerText = "Its a TIE";
     return 2;
 }
 //Computer wins
 else
-    console.log("Computer WINS"); 
+    outcome.innerText = "Computer wins";
     return 3;
 }
+
+
+
 
 function playGame(ui_selection){
 
@@ -86,15 +97,26 @@ let comp_count = 0, player_count = 0, tie_count = 0;
 
 //DOM CHANGES
 
+//Displaying the title 
+const container = document.querySelector("#container");
+
+const Title = document.createElement("h1");
+Title.classList.add("Title");
+Title.textContent = "Welcome to ROCK PAPER SCISSORS";
+
+container.appendChild(Title);
+
+//Displaying the buttons, making sure they return something 
 
 const buttons = document.querySelectorAll("button");
-
-// we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-  // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
     playGame(button.id);
   });
 });
+
+
+
+
 
  
